@@ -16,20 +16,28 @@ import { ChangeAlert } from '../components/ChangeAlert';
 function App() {
 
 	const {
+		state,
+		stateUpdaters
+	} = useTodos();
+
+	const {
 		error,
 		loading,
 		searchedTodos,
-		completeTodo,
-		deleteTodo,
-		openModal, 
-		setOpenModal,
 		totalTodos,
+		completeTodo,
 		completedTodos,
-		searchValue, 
-        setSearchValue,
+		openModal, 
+		searchValue
+	} = state;
+
+	const {
+		setOpenModal,
 		addTodo,
+		deleteTodo,
+        setSearchValue,
 		sincronizeTODOS
-	} = useTodos();
+	} = stateUpdaters;
 
 	return(
         <>
@@ -37,12 +45,10 @@ function App() {
 				<TodoCounter
 					totalTodos={totalTodos}
 					completedTodos={completedTodos}
-					//loading={loading}
 				/>
 				<TodoSearch
 					searchValue={searchValue}
 					setSearchValue={setSearchValue}
-					//loading={loading}
 				/>
 			</TodoHeader>
 			
